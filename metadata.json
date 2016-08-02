@@ -1,0 +1,41 @@
+{
+  "name": "vholer-openafs",
+  "version": "0.9.0",
+  "author": "vholer",
+  "summary": "OpenAFS module",
+  "license": "MIT",
+  "source": "https://github.com/vholer/puppet-openafs.git",
+  "project_page": "https://github.com/vholer/puppet-openafs",
+  "issues_url": "https://github.com/vholer/puppet-openafs/issues",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.0.0"}
+  ],
+  "tags": [
+    "afs",
+    "openafs"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian"
+    },
+    {
+      "operatingsystem": "Ubuntu"
+    },
+    {
+      "operatingsystem": "SLES"
+    },
+    {
+      "operatingsystem": "SLED"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": "3.3.x"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": "3.0"
+    }
+  ]
+}
