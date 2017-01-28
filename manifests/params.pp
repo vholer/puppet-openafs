@@ -17,6 +17,7 @@ class openafs::params {
   $client_cell_serv_db_source = ''
   $client_post_init = ''
   $client_pam_afs_session_args = []
+  $client_notify_service = true
 
   case $::operatingsystem {
     debian: {

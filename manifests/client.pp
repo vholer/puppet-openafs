@@ -6,6 +6,7 @@ class openafs::client (
   $apt_version          = $openafs::params::apt_version,
   $own_repo_class       = $openafs::params::own_repo_class,
 
+  $notify_service       = $openafs::params::client_notify_service,
   $service              = $openafs::params::client_service,
   $hasrestart           = $openafs::params::client_service_hasrestart,
   $hasstatus            = $openafs::params::client_service_hasstatus,
@@ -124,7 +125,12 @@ class openafs::client (
 
     Class['openafs::client::install']
       -> Class["openafs::client::config::${config_class}"]
+      -> Class['openafs::client::service']
+
+    if $notify_service {
+      Class["openafs::client::config::${config_class}"]
       ~> Class['openafs::client::service']
+    }
   }
 
   class { 'openafs::client::service':
@@ -137,6 +143,11 @@ class openafs::client (
   anchor { 'openafs::client::begin': ; }
     -> Class['openafs::client::install']
     -> Class['openafs::client::config']
-    ~> Class['openafs::client::service']
+    -> Class['openafs::client::service']
     -> anchor { 'openafs::client::end': ; }
+
+  if $notify_service {
+    Class['openafs::client::config']
+    ~> Class['openafs::client::service']
+  }
 }
